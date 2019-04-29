@@ -1,9 +1,8 @@
 #include <eosio/eosio.hpp>
-#include <eosio/singleton.hpp>
 #include <string>
 
 using namespace eosio;
-using std::string;
+using namespace std;
 
 class [[eosio::contract("example")]] example : public contract {
 
@@ -11,18 +10,28 @@ public:
 
     using contract::contract;
 
-    [[eosio::action]] void ping(string message) {
-
-        print(message);
+    [[eosio::action]] void post(const name author, const string message) {
+        // Ensure author is signee
+        require_auth(author);
+        // Initialize a message table instance
+        message_table messages(_self, _self.value);
+        // Store the new message for author
+        messages.emplace(author, [&](auto &post) {
+            post.id = messages.available_primary_key();
+            post.body = message;
+            post.author = author;
+        });
     }
     
 private:
 
-    struct [[eosio::table]] state_row {
-        uint64_t count = 0;
+    struct [[eosio::table]] MessageStruct {
+        uint64_t        id;
+        string          body;
+        name            author;
+
+        uint64_t primary_key() const { return id; };
     };
 
-    typedef eosio::singleton<"state"_n, state_row> state_table;
-
-    state_table state;
+    typedef multi_index<"messages"_n, MessageStruct> message_table;
 };
