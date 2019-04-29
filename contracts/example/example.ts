@@ -7,15 +7,17 @@
 import { Account, Contract, TableRowsResult } from 'lamington';
 
 // Table row types
-export interface ExampleStateRow {
-	count: number;
+export interface ExampleMessages {
+	id: number;
+	body: string;
+	author: string|number;
 }
 
 export interface Example extends Contract {
 	// Actions
-	ping(message: string, options?: { from?: Account }): Promise<any>;
+	post(author: string|number, message: string, options?: { from?: Account }): Promise<any>;
 	
 	// Tables
-	state_row(scope?: string): Promise<TableRowsResult<ExampleStateRow>>;
+	messages(scope?: string): Promise<TableRowsResult<ExampleMessages>>;
 }
 
