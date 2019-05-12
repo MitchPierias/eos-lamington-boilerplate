@@ -6,11 +6,13 @@
     "scripts": {
         "build": "lamington build",
         "test": "lamington test",
-        "init": "lamington init"
+        "init": "lamington init",
+        "stop": "lamington stop"
     },
     "author": "Mitch Pierias <github.com/MitchPierias>",
     "license": "ISC",
     "devDependencies": {
+        "lamington": "latest",
         "@types/chai": "^4.1.7",
         "@types/mocha": "^5.2.6",
         "chai": "^4.2.0"
