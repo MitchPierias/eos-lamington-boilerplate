@@ -1,7 +1,9 @@
 {
-    "outDir":"dist",
-    "keepAlive": true,
-    "exclude": [
-        "example.cpp"
-    ]
+    "cdt": "https://github.com/EOSIO/eosio.cdt/releases/download/v1.6.2/eosio.cdt_1.6.2-1-ubuntu-18.04_amd64.deb",
+    "eos": "https://github.com/EOSIO/eos/releases/download/v1.8.1/eosio_1.8.1-1-ubuntu-18.04_amd64.deb",
+    "debug": 0,
+    "debugTransactions": false,
+    "keepAlive": false,
+    "outDir": ".lamington",
+    "exclude": []
 }

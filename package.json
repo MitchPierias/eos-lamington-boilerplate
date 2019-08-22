@@ -7,7 +7,8 @@
         "build": "lamington build",
         "test": "lamington test",
         "init": "lamington init",
-        "stop": "lamington stop"
+        "stop": "lamington stop",
+        "clean": "lamington clean"
     },
     "author": "Mitch Pierias <github.com/MitchPierias>",
     "license": "ISC",
@@ -17,5 +18,8 @@
         "@types/mocha": "^5.2.6",
         "chai": "^4.2.0"
     },
-    "dependencies": {}
+    "dependencies": {
+        "eosjs": "^20.0.0",
+        "lamington": "^1.0.0-alpha.3"
+    }
 }
